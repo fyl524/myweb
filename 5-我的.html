@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+<link rel="stylesheet" href="css/demos.css"/>
+</head>
+<body ontouchstart>
+<header class="pageheader"><a href="#"><img src="images/myImg/logo_db.png" class="logo" /></a></header>
+<div class="weui-tab">
+  <div class="weui-tab__panel">
+<div class="weui-msg">
+        <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+          <h2 class="weui-msg__title">您还没有登录哦</h2>
+          <p class="weui-msg__desc">未登录是无法查看的哦，已有账号赶快去登录，没有账号请先注册后再登录哦</p>
+        </div>
+        <div class="weui-msg__opr-area">
+          <p class="weui-btn-area"> <a href="javascript:;" class="weui-btn weui-btn_primary" id="showIOSDialog1">立即登录</a> <a href="#" class="weui-btn weui-btn_default">立即注册</a> </p>
+        </div>
+      </div>  </div>
+  <div class="weui-tabbar"> <a href="#tab1" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/home.png" alt=""> </div>
+    <p class="weui-tabbar__label">首页</p>
+    </a> <a href="#tab2" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/read.png" alt=""> </div>
+    <p class="weui-tabbar__label">阅读</p>
+    </a> <a href="#tab3" class="weui-tabbar__item weui-bar__item--on">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/movie.png" alt=""> </div>
+    <p class="weui-tabbar__label">电影</p>
+    </a> <a href="#tab4" class="weui-tabbar__item"> <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+    <div class="weui-tabbar__icon"> <img src="images/myImg/user.png" alt=""> </div>
+    <p class="weui-tabbar__label">我的</p>
+    </a> </div>
+</div>
+<div class="js_dialog" id="iosDialog1" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">提示</strong></div>
+                <div class="weui-dialog__bd">您还没有注册，无法登录</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+                </div>
+            </div>
+        </div>
+<script src="js/zepto.min.js"></script> 
+<script type="text/javascript">
+    $(function(){
+       /* var $iosDialog1 = $('#iosDialog1'),
+            $iosDialog2 = $('#iosDialog2'),
+            $androidDialog1 = $('#androidDialog1'),
+            $androidDialog2 = $('#androidDialog2');
+*/
+        $('#iosDialog1').on('click', '.weui-dialog__btn', function(){
+            $(this).parents('.js_dialog').fadeOut(200);
+        });
+
+		 var $iosDialog1 = $('#iosDialog1');
+        $('#showIOSDialog1').on('click', function(){
+            $iosDialog1.fadeIn(200);
+        });
+       /* $('#showIOSDialog2').on('click', function(){
+            $iosDialog2.fadeIn(200);
+        });
+        $('#showAndroidDialog1').on('click', function(){
+            $androidDialog1.fadeIn(200);
+        });
+        $('#showAndroidDialog2').on('click', function(){
+            $androidDialog2.fadeIn(200);
+        });*/
+    });
+</script>
+</body>
+</html>

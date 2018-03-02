@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+<link rel="stylesheet" href="css/demos.css"/>
+</head>
+<body ontouchstart>
+<header class="pageheader"><a href="#"><img src="images/myImg/logo_db.png" class="logo" /></a></header>
+<div class="weui-tab">
+  <div class="weui-tab__panel"> 
+    <div class="weui-search-bar" id="searchBar">
+      <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box"> <i class="weui-icon-search"></i>
+          <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required/>
+          <a href="javascript:" class="weui-icon-clear" id="searchClear"></a> </div>
+        <label class="weui-search-bar__label" id="searchText"> <i class="weui-icon-search"></i> <span>搜索</span> </label>
+      </form>
+      <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a> </div>
+    <div class="weui-cells__title">我的关注</div>
+    <div class="weui-grids homeList"> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"><img src="images/myImg/01.jpg" alt=""> </div>
+      <p class="weui-grid__label"> 电影 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/02.png" alt=""> </div>
+      <p class="weui-grid__label"> 电视 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/03.jpg" alt=""> </div>
+      <p class="weui-grid__label"> 图书 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/04.png" alt=""> </div>
+      <p class="weui-grid__label"> 同城 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/05.jpg" alt=""> </div>
+      <p class="weui-grid__label"> 小组 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/06.png" alt=""> </div>
+      <p class="weui-grid__label"> 音乐 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/07.jpg" alt=""> </div>
+      <p class="weui-grid__label"> 阅读 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/08.jpg" alt=""> </div>
+      <p class="weui-grid__label"> 游戏 </p>
+      </a> <a href="" class="weui-grid js_grid">
+      <div class="weui-grid__icon"> <img src="images/myImg/09.png" alt=""> </div>
+      <p class="weui-grid__label"> 应用 </p>
+      </a> </div>
+  </div>
+  <div class="weui-tabbar"> <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/home.png" alt=""> </div>
+    <p class="weui-tabbar__label">首页</p>
+    </a> <a href="#tab2" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/read.png" alt=""> </div>
+    <p class="weui-tabbar__label">阅读</p>
+    </a> <a href="#tab3" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon"> <img src="images/myImg/movie.png" alt=""> </div>
+    <p class="weui-tabbar__label">电影</p>
+    </a> <a href="#tab4" class="weui-tabbar__item"> <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+    <div class="weui-tabbar__icon"> <img src="images/myImg/user.png" alt=""> </div>
+    <p class="weui-tabbar__label">我的</p>
+    </a> </div>
+</div>
+<script src="js/zepto.min.js"></script> 
+<script type="text/javascript">
+    $(function(){
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult(){
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch(){
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function(){
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if(!this.value.length) cancelSearch();
+            })
+            .on('input', function(){
+                if(this.value.length) {
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function(){
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function(){
+            cancelSearch();
+            $searchInput.blur();
+        });
+    });
+</script>
+</body>
+</html>

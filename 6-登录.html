@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+<link rel="stylesheet" href="css/demos.css"/>
+</head>
+<body>
+</head>
+<body ontouchstart>
+<header class="pageheader"><a href="#"><img src="images/myImg/logo_db.png" class="logo" /></a></header>
+<div class="weui-tab__panel">
+  <div class="weui-cells weui-cells_form">
+    <div class="weui-cell"> 
+      <!--<div class="weui-cell__hd"><label class="weui-label">手机号码</label></div>-->
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="邮箱 / 手机号 / 用户名">
+      </div>
+    </div>
+    <div class="weui-cell"> 
+      <!--<div class="weui-cell__hd"><label class="weui-label">密码</label></div>-->
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="password" placeholder="密码 (最少6位)">
+      </div>
+    </div>
+  </div>
+  <div class="weui-btn-area">
+    <input type="submit" value="登录" class="weui-btn weui-btn_primary">
+  </div>
+  <div class="weui-cells__tips tac"> <a href="javascript:;" id="showIOSActionSheet">使用其他方式登录</a> &amp; 找回密码</div>
+</div>
+<div>
+  <div class="weui-mask" id="iosMask" style="display: none"></div>
+  <div class="weui-actionsheet" id="iosActionsheet">
+    <div class="weui-actionsheet__title">
+      <p class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</p>
+    </div>
+    <div class="weui-actionsheet__menu">
+      <div class="weui-actionsheet__cell">示例菜单</div>
+      <div class="weui-actionsheet__cell">示例菜单</div>
+      <div class="weui-actionsheet__cell">示例菜单</div>
+      <div class="weui-actionsheet__cell">示例菜单</div>
+    </div>
+    <div class="weui-actionsheet__action">
+      <div class="weui-actionsheet__cell" id="iosActionsheetCancel">取消</div>
+    </div>
+  </div>
+</div>
+<script src="js/zepto.min.js"></script> 
+<script type="text/javascript">
+    // ios
+    $(function(){
+        var $iosActionsheet = $('#iosActionsheet');
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $iosActionsheet.removeClass('weui-actionsheet_toggle');
+            $iosMask.fadeOut(200);
+        }
+
+        $iosMask.on('click', hideActionSheet);
+        $('#iosActionsheetCancel').on('click', hideActionSheet);
+        $("#showIOSActionSheet").on("click", function(){
+            $iosActionsheet.addClass('weui-actionsheet_toggle');
+            $iosMask.fadeIn(200);
+        });
+    });
+
+    // android
+    $(function(){
+        var $androidActionSheet = $('#androidActionsheet');
+        var $androidMask = $androidActionSheet.find('.weui-mask');
+
+        $("#showAndroidActionSheet").on('click', function(){
+            $androidActionSheet.fadeIn(200);
+            $androidMask.on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+        });
+    });
+</script>
+</body>
+</html>
